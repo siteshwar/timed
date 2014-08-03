@@ -38,7 +38,6 @@
 
 #define LOG_LEVEL LOG_DEBUG
 
-#if LOG_LEVEL >= LOG_DEBUG
 # define log_debug(FMT,ARGS...) \
     do { \
         printf("DEBUG: %s:%d: %s", __FILE__, __LINE__, Q_FUNC_INFO); \
@@ -47,9 +46,6 @@
         else \
             printf("\n"); \
     } while(0)
-#else
-# define log_debug(FMT,ARGS...) do { } while(0)
-#endif
 
 #if LOG_LEVEL >= LOG_INFO
 # define log_info(FMT,ARGS...) do { fprintf(stderr, "INFO: "FMT"\n", ## ARGS); } while(0)

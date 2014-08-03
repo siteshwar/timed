@@ -21,6 +21,7 @@
 
 #include <QList>
 #include <QStringList>
+#include <QDebug>
 
 #include "../common/log.h"
 
@@ -157,6 +158,7 @@ void NetworkTime::networkTimeChanged(QVariantMap map)
 
 void NetworkTime::networkTimeQueryCompletedSlot(QVariantMap map)
 {
+    qDebug() << map;
     m_networkTimeInfo = parseNetworkTimeInfoFromMap(map);
     log_debug("time: %s",
               m_networkTimeInfo.toString().toStdString().c_str());
